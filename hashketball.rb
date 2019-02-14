@@ -117,26 +117,23 @@ end
   
 def num_points_scored(name)
   hash = game_hash
-  hash.each do |location, info| 
-    info.each do |attribute, stuff| 
-      if stuff.include?(name) 
+  hash.each do |loaction, info| 
+    info.each do |attribute, stats| 
+      if stats.include?(name) 
        return hash[location][attribute][name][:points]
       end
     end
   end
 end
 
-def team_names
-  hash = game_hash
-  array = []
-  hash.each do |location, attributes|
-    attributes.each do |attribute, info|
-      if attribute == :team_name
-        array << info
+def shoe_size(name)
+  game_hash.each do |location, info|
+    info[:players].each do |attribute, players|
+      if name == attribute
+       return players[:shoe]
       end
     end
   end
-  return array
 end
 
 def team_colors(team_name)
@@ -151,6 +148,19 @@ def team_colors(team_name)
       end
     end
   end
+end
+
+  def team_names
+  hash = game_hash
+  array = []
+  hash.each do |location, attributes|
+    attributes.each do |attribute, info|
+      if attribute == :team_name
+        array.push(info)
+      end
+    end
+  end
+  return array
 end
 
 def player_numbers(team_name)
