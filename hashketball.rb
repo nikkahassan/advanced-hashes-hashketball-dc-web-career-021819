@@ -120,12 +120,8 @@ def num_points_scored(name)
 end
 
 def get_player_stat(name, stat)
-  game_hash.each do |location, info| 
-   if info[:players].include?(name)
-       return game_hash[location][:players][name][stat]
-    end
-  end
-end
+  
+
   
 
 def shoe_size(name)
